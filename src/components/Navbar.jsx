@@ -1,27 +1,41 @@
-import { NavLink } from 'react-router';
-import { useAuth } from '../context/AuthContext';
+import { useNavigate, Link } from 'react-router-dom';
+import { supabase } from '../supabaseClient';
 
-export default function Navbar() {
-  const { user, signOut } = useAuth();
+export function Navbar({ session }) {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error('Error al cerrar sesión:', error.message);
+    } else {
+      // Redirigir al Home tras cerrar sesión
+      navigate('/');
+    }
+  };
 
   return (
-    <header className="navbar">
+    <nav className="navbar">
       <div className="navbar-brand">
-        <h1>{import.meta.env.VITE_TITULO || 'Rick & Morty'}</h1>
+        <Link to="/">🛸 Rick & Morty</Link>
       </div>
-      <nav className="navbar-links">
-        <NavLink to="/" end className={({ isActive }) => (isActive ? 'activo' : '')}>Portada</NavLink>
-        <NavLink to="/personajes" className={({ isActive }) => (isActive ? 'activo' : '')}>Listado</NavLink>
-        <NavLink to="/favoritos" className={({ isActive }) => (isActive ? 'activo' : '')}>Favoritos</NavLink>
 
-        {user ? (
-          <button onClick={signOut} className="btn-accion" style={{ padding: '0.3rem 0.8rem', fontSize: '0.85rem' }}>
-            Cerrar Sesión ({user.email.split('@')[0]})
+      <div className="navbar-links">
+        <Link to="/">Inicio</Link>
+        {session && <Link to="/favoritos">Favoritos</Link>}
+        
+        {session ? (
+          <button onClick={handleLogout} className="btn-logout">
+            Cerrar Sesión
           </button>
         ) : (
-          <NavLink to="/login" className={({ isActive }) => (isActive ? 'activo' : '')}>Ingresar</NavLink>
+          <Link to="/login" className="btn-login">
+            Iniciar Sesión
+          </Link>
         )}
-      </nav>
-    </header>
+      </div>
+    </nav>
   );
 }
+
+export default Navbar;
