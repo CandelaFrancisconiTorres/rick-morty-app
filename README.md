@@ -27,6 +27,11 @@ Aplicación mobile adaptada a web desarrollada en React + Vite para la gestión 
 * **Deploy y Enrutamiento:** Aplicación desplegada en Vercel con soporte para HTTPS (requisito clave para las APIs del dispositivo en celulares) y configuración SPA (`vercel.json`) para evitar errores 404 al recargar.
 
 
+## 🔗 Dónde encontrar el proyecto
+
+Github: https://github.com/CandelaFrancisconiTorres/rick-morty-app
+Vercel: https://rick-morty-app-candela-ftorres.vercel.app/
+
 
 ## 🚀 Cómo armar el proyecto desde cero
 
