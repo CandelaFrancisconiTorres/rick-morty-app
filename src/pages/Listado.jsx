@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { obtenerPersonajes } from '../api/rickandmorty';
 import { useFetch } from '../hooks/useFetch';
