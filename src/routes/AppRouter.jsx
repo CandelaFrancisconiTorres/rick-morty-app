@@ -6,6 +6,7 @@ import Listado from '../pages/Listado';
 import Detalle from '../pages/Detalle';
 import Favoritos from '../pages/Favoritos';
 import NoEncontrado from '../pages/NoEncontrado';
+import Login from '../pages/Login';
 
 function LayoutPrincipal() {
   return (
@@ -29,6 +30,7 @@ export default function AppRouter() {
           <Route path="/personajes/:id" element={<Detalle />} />
           <Route path="/favoritos" element={<Favoritos />} />
           <Route path="*" element={<NoEncontrado />} />
+          <Route path="/login" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>

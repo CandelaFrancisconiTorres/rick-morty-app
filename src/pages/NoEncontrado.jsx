@@ -1,36 +1,15 @@
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import Portada from '../pages/Portada';
-import Listado from '../pages/Listado';
-import Detalle from '../pages/Detalle';
-import Favoritos from '../pages/Favoritos';
-import NoEncontrado from '../pages/NoEncontrado';
+import { Link } from 'react-router';
 
-function LayoutPrincipal() {
+export default function NoEncontrado() {
   return (
-    <div className="app-layout">
-      <Navbar />
-      <main className="contenido-principal">
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
-  );
-}
-
-export default function AppRouter() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<LayoutPrincipal />}>
-          <Route path="/" element={<Portada />} />
-          <Route path="/personajes" element={<Listado />} />
-          <Route path="/personajes/:id" element={<Detalle />} />
-          <Route path="/favoritos" element={<Favoritos />} />
-          <Route path="*" element={<NoEncontrado />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <section className="no-encontrado-seccion" style={{ textAlign: 'center', padding: '4rem 1rem' }}>
+      <h2>¡404! Portal equivocado 🛸</h2>
+      <p style={{ margin: '1rem 0', color: '#94a3b8' }}>
+        La página o el personaje que buscás no existe o fue abducido por otra dimensión.
+      </p>
+      <Link to="/" className="btn-accion" style={{ display: 'inline-block', marginTop: '1rem' }}>
+        Volver al inicio
+      </Link>
+    </section>
   );
 }

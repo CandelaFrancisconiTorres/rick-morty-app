@@ -5,6 +5,7 @@ export async function obtenerPersonajes(params = {}, signal) {
   if (params.page) urlParams.append('page', params.page);
   if (params.name) urlParams.append('name', params.name);
   if (params.status) urlParams.append('status', params.status);
+  if (params.gender) urlParams.append('gender', params.gender);
 
   const response = await fetch(`${API_URL}/character/?${urlParams.toString()}`, { signal });
   

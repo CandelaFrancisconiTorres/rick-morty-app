@@ -92,6 +92,7 @@ body {
 }
 
 .tarjeta-personaje {
+  container-type: inline-size;
   background-color: var(--color-superficie);
   border: 1px solid var(--color-borde);
   border-radius: 12px;
@@ -100,6 +101,12 @@ body {
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@container (min-width: 280px) {
+  .tarjeta-info h3 {
+    font-size: 1.35rem;
+  }
 }
 
 .tarjeta-personaje:hover {

@@ -11,6 +11,7 @@ export default function Listado() {
   
   const nombreQuery = searchParams.get('name') || '';
   const estadoQuery = searchParams.get('status') || '';
+  const generoQuery = searchParams.get('gender') || '';
   const paginaQuery = parseInt(searchParams.get('page') || '1', 10);
 
   const [nombreInput, setNombreInput] = useState(nombreQuery);
@@ -20,8 +21,13 @@ export default function Listado() {
   }, [nombreQuery]);
 
   const { data, loading, error } = useFetch(
-    (signal) => obtenerPersonajes({ name: nombreQuery, status: estadoQuery, page: paginaQuery }, signal),
-    [nombreQuery, estadoQuery, paginaQuery]
+    (signal) => obtenerPersonajes({ 
+      name: nombreQuery, 
+      status: estadoQuery, 
+      gender: generoQuery, 
+      page: paginaQuery 
+    }, signal),
+    [nombreQuery, estadoQuery, generoQuery, paginaQuery]
   );
 
   const { esFavorito, toggleFavorito } = useFavoritos();
@@ -50,6 +56,18 @@ export default function Listado() {
     setSearchParams(nuevosParams);
   };
 
+  const handleGenderChange = (e) => {
+    const nuevoGenero = e.target.value;
+    const nuevosParams = new URLSearchParams(searchParams);
+    if (nuevoGenero) {
+      nuevosParams.set('gender', nuevoGenero);
+    } else {
+      nuevosParams.delete('gender');
+    }
+    nuevosParams.set('page', '1');
+    setSearchParams(nuevosParams);
+  };
+
   const cambiarPagina = (nuevaPagina) => {
     const nuevosParams = new URLSearchParams(searchParams);
     nuevosParams.set('page', nuevaPagina);
@@ -73,14 +91,27 @@ export default function Listado() {
           <button type="submit" className="btn-accion">Buscar</button>
         </form>
 
-        <div className="filtro-estado">
-          <label htmlFor="status-select">Estado:</label>
-          <select id="status-select" value={estadoQuery} onChange={handleStatusChange}>
-            <option value="">Todos</option>
-            <option value="alive">Vivo</option>
-            <option value="dead">Muerto</option>
-            <option value="unknown">Desconocido</option>
-          </select>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <div className="filtro-estado" style={{ flex: 1, minWidth: '140px' }}>
+            <label htmlFor="status-select" style={{ display: 'block', marginBottom: '0.3rem', fontSize: '0.9rem' }}>Estado:</label>
+            <select id="status-select" value={estadoQuery} onChange={handleStatusChange} style={{ width: '100%' }}>
+              <option value="">Todos</option>
+              <option value="alive">Vivo</option>
+              <option value="dead">Muerto</option>
+              <option value="unknown">Desconocido</option>
+            </select>
+          </div>
+
+          <div className="filtro-estado" style={{ flex: 1, minWidth: '140px' }}>
+            <label htmlFor="gender-select" style={{ display: 'block', marginBottom: '0.3rem', fontSize: '0.9rem' }}>Género:</label>
+            <select id="gender-select" value={generoQuery} onChange={handleGenderChange} style={{ width: '100%' }}>
+              <option value="">Todos</option>
+              <option value="female">Femenino</option>
+              <option value="male">Masculino</option>
+              <option value="genderless">Sin género</option>
+              <option value="unknown">Desconocido</option>
+            </select>
+          </div>
         </div>
       </div>
 
