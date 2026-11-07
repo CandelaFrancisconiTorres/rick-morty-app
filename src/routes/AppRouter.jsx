@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Portada from '../pages/Portada';
@@ -25,7 +25,7 @@ export default function AppRouter() {
     <BrowserRouter>
       <Routes>
         <Route element={<LayoutPrincipal />}>
-          <Route path="/" element={<Portada />} />
+          <Route path="/" element={<Inicio  />} />
           <Route path="/personajes" element={<Listado />} />
           <Route path="/personajes/:id" element={<Detalle />} />
           <Route path="/favoritos" element={<Favoritos />} />
