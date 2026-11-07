@@ -25,7 +25,7 @@ export default function AppRouter() {
     <BrowserRouter>
       <Routes>
         <Route element={<LayoutPrincipal />}>
-          <Route path="/" element={<Inicio  />} />
+          <Route path="/" element={<Portada />} />
           <Route path="/personajes" element={<Listado />} />
           <Route path="/personajes/:id" element={<Detalle />} />
           <Route path="/favoritos" element={<Favoritos />} />
