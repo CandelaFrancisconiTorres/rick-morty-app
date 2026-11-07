@@ -314,3 +314,82 @@ button, .btn-accion, .btn-principal, .btn-favorito {
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--color-borde);
 }
+
+/* --- TARJETA DE LOGIN Y CONTENEDOR --- */
+.login-container {
+  max-width: 420px;
+  margin: 3rem auto;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 25px rgba(0, 255, 102, 0.12);
+}
+
+.login-container h2 {
+  color: var(--color-primario);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.8rem;
+  text-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  color: var(--color-texto);
+}
+
+.form-group input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+  background-color: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 8px rgba(0, 255, 102, 0.3);
+}
+
+.btn-primary {
+  width: 100%;
+  background-color: var(--color-primario);
+  color: #050811;
+  border: none;
+  font-weight: bold;
+  padding: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.auth-switch {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.auth-switch a {
+  color: var(--color-primario);
+  text-decoration: none;
+  font-weight: 600;
+}
